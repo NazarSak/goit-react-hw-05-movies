@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { SearchM } from 'components/services/getMovies';
 import Notiflix from 'notiflix';
 import TitleGallery from 'components/titleGallery/TitleGallery';
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [value, setValue] = useState('');
   const [searchText, setSearchText] = useState('');
   const [title, setTitle] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
 
 
-  const query = searchParams.get('query') || "";
+  // const query = searchParams.get('query') || "";
 
 
   useEffect(() => {
@@ -53,8 +53,8 @@ const Movies = () => {
 
   const handleChange = e => {
     setValue(e.currentTarget.value);
-    const nextParams = query !== "" ? { query } : {};
-    setSearchParams(nextParams);
+    // const nextParams = query !== "" ? { query } : {};
+    // setSearchParams(nextParams);
 
   };
 
