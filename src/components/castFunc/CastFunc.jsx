@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { Ul,Name } from './castFunc.styled';
 
 
 const CastFunc = ({ cast }) => {
   return (
-    <ul>
+    <Ul>
       {cast.map(person => (
         <li key={person.id}>
           <img
@@ -17,10 +18,10 @@ const CastFunc = ({ cast }) => {
             width="400px"
             height="400px"
           />
-          <h3>{person.name}</h3>
+          <Name>{person.name}</Name>
         </li>
       ))}
-    </ul>
+    </Ul>
   );
 };
 

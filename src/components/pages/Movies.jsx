@@ -3,6 +3,8 @@ import { SearchM } from 'components/services/getMovies';
 import Notiflix from 'notiflix';
 import TitleGallery from 'components/titleGallery/TitleGallery';
 import { useSearchParams } from 'react-router-dom';
+import { Form,ButtonS,InputS } from './movies.styled';
+
 
 const Movies = () => {
   const [value, setValue] = useState('');
@@ -38,12 +40,7 @@ const Movies = () => {
 };
 
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    handleSearch(value);
-    updateQueryString(value)
-    reset();
-  };
+ 
 
   const handleSearch = searchTextе => {
     if (searchText.trim() === searchTextе) {
@@ -54,8 +51,6 @@ const Movies = () => {
 
   const handleChange = e => {
     setValue(e.currentTarget.value);
-    // const nextParams = query !== "" ? { query } : {};
-    // setSearchParams(nextParams);
 
   };
 
@@ -63,20 +58,27 @@ const Movies = () => {
     setValue('');
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    handleSearch(value);
+    updateQueryString(value)
+    reset();
+  };
+
   return (
     <>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <button type="submit">
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <ButtonS type="submit">
           <span>Search</span>
-        </button>
-        <input
+        </ButtonS>
+        <InputS
           type="text"
           value={value}
           name="search"
           onChange={handleChange}
           placeholder="Search images and photos"
         />
-      </form>
+      </Form>
 
       {title  && <TitleGallery data={title} />}
     </>

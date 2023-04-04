@@ -4,6 +4,19 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import {
+  CastWord,
+  ReviewWord,
+  UlAdd,
+  AddInd,
+  Popular,
+  Overw,
+  UnderOver,
+  Container,
+  Status,
+  OriginName,
+  Img,
+} from './movieDetails.styled';
 
 const MovieDetails = () => {
   const [info, setInfo] = useState('');
@@ -19,7 +32,7 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <img
+      <Img
         src={
           info.poster_path
             ? `https://www.themoviedb.org/t/p/original/${info.poster_path}`
@@ -29,26 +42,33 @@ const MovieDetails = () => {
         width="1000"
         height="1000"
       />
-      <h2>{original_title}</h2>
-      <p>Popularity:{popularity}</p>
-      <h3>Overview</h3>
-      {overview === '' ? <p>sorry,but overview empty </p> : <p>{overview}</p>}
-      <p>
+      <OriginName>{original_title}</OriginName>
+      <Popular>Popularity:{popularity}</Popular>
+      <Container>
+      <Overw>Overview</Overw>
+      {overview === '' ? <UnderOver>sorry,but overview empty </UnderOver> : <UnderOver>{overview}</UnderOver>}
+      </Container>
+      
+      <Status>
         <span>Status</span>:{status}
-      </p>
+      </Status>
 
-      <h4>Adittional information</h4>
-   
-      <ul>
+      <AddInd>Adittional information</AddInd>
+
+      <UlAdd>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="cast">
+            <CastWord>Cast</CastWord>
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews">
+            <ReviewWord>Reviews</ReviewWord>
+          </Link>
         </li>
-      </ul>
+      </UlAdd>
       <Suspense fallback={<div>Loading...</div>}>
-      <Outlet />
+        <Outlet />
       </Suspense>
     </div>
   );

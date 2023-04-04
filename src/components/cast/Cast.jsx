@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CastFunc from 'components/castFunc/CastFunc';
 
+
 const Cast = () => {
   const [cast, setCast] = useState([]);
   const { moveid } = useParams();
