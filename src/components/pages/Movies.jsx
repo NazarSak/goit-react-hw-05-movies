@@ -70,6 +70,6 @@ const Movies = () => {
       {title !== null && <TitleGallery data={title} />}
     </>
   );
-};
+}
 
 export default Movies;

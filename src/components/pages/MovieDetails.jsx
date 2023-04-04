@@ -3,6 +3,7 @@ import { SearchById } from 'components/services/getMovies';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 
 const MovieDetails = () => {
   const [info, setInfo] = useState('');
@@ -18,10 +19,16 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <img src={(info.poster_path) ? (`https://www.themoviedb.org/t/p/original/${info.poster_path}`) : ("https://i.ibb.co/FB037FW/image.jpg")} 
-      alt={info.tagline} 
-      width="1000"
-      height="1000"/>
+      <img
+        src={
+          info.poster_path
+            ? `https://www.themoviedb.org/t/p/original/${info.poster_path}`
+            : 'https://i.ibb.co/FB037FW/image.jpg'
+        }
+        alt={info.tagline}
+        width="1000"
+        height="1000"
+      />
       <h2>{original_title}</h2>
       <p>Popularity:{popularity}</p>
       <h3>Overview</h3>
@@ -31,7 +38,7 @@ const MovieDetails = () => {
       </p>
 
       <h4>Adittional information</h4>
-
+   
       <ul>
         <li>
           <Link to="cast">Cast</Link>
@@ -40,9 +47,10 @@ const MovieDetails = () => {
           <Link to="reviews">Reviews</Link>
         </li>
       </ul>
-      <Outlet/>
+      <Suspense fallback={<div>Loading...</div>}>
+      <Outlet />
+      </Suspense>
     </div>
-    
   );
 };
 
