@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 
 const TitleGallery = ({ data }) => {
@@ -14,4 +15,12 @@ const TitleGallery = ({ data }) => {
   );
 };
 
+
 export default TitleGallery;
+
+TitleGallery.propTypes = {
+  query:PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    original_title:  PropTypes.string,
+  }))
+}

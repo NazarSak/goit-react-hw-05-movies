@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './layout/Layout';
-import  { lazy } from 'react';
+import { lazy } from 'react';
 // import { Suspense } from 'react';
 // import { lazy } from 'react';
 
@@ -17,25 +17,22 @@ const Reviews = lazy(() => import('./reviews/Reviews'));
 const Cast = lazy(() => import('./cast/Cast'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-
- const App = () => {
+const App = () => {
   return (
     <>
-    <Routes>
-      {/* <Suspense fallback={<div>Loading...</div>}/> */}
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="movies/:moveid" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:moveid" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>  
+      </Routes>
     </>
-  
   );
 };
 
-export default App
+export default App;

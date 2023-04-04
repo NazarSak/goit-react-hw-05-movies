@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 
 const CastFunc = ({ cast }) => {
   return (
@@ -21,5 +23,28 @@ const CastFunc = ({ cast }) => {
     </ul>
   );
 };
+
+
+
+
+CastFunc.propTypes = {
+  cast: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+          profile_path:PropTypes.string,
+          name:PropTypes.string,
+        })
+      ),
+}
+
+// ReviewFunc.propTypes = {
+//   reviews: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+//       content: PropTypes.string,
+//       author: PropTypes.string,
+//     })
+//   ),
+// };
 
 export default CastFunc;

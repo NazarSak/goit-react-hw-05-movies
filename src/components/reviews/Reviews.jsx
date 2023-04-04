@@ -3,6 +3,7 @@ import { ReviewsById } from 'components/services/getMovies';
 import { useEffect, useState } from 'react';
 import ReviewFunc from 'components/reviewFunc/ReviewFunc';
 
+
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { moveid } = useParams();

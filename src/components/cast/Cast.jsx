@@ -14,7 +14,12 @@ const Cast = () => {
       .then(data => setCast(data.cast));
   }, [moveid]);
 
-  return <CastFunc cast={cast} />;
+  return ( <>
+  {cast.length === 0 ? <p>Sorry but we don't have actors for unknown reasons</p> : <CastFunc cast={cast} />}
+  </>
+    
+  )
+ 
 };
 
 export default Cast;

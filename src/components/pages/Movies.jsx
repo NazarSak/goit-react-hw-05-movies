@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { SearchM } from 'components/services/getMovies';
 import Notiflix from 'notiflix';
 import TitleGallery from 'components/titleGallery/TitleGallery';
-// import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [value, setValue] = useState('');
   const [searchText, setSearchText] = useState('');
   const [title, setTitle] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(null);
 
-  // const valueQuery = searchParams.get('value') ;
-
+  const valueQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
     if (!searchText) {
@@ -31,6 +31,14 @@ const Movies = () => {
       });
   }, [searchText]);
 
+  useEffect(() => {
+    title && setQuery(
+      title.filter(el =>
+        el.title.toLowerCase().includes(valueQuery.toLowerCase)
+      )
+    );
+  }, [searchParams, title, valueQuery]);
+
   const handleSubmit = e => {
     e.preventDefault();
     handleSearch(value);
@@ -46,6 +54,7 @@ const Movies = () => {
 
   const handleChange = e => {
     setValue(e.currentTarget.value);
+    setSearchParams({ query: e.target.value });
   };
 
   const reset = () => {
@@ -67,9 +76,9 @@ const Movies = () => {
         />
       </form>
 
-      {title !== null && <TitleGallery data={title} />}
+      {query !== null && <TitleGallery data={title} />}
     </>
   );
-}
+};
 
 export default Movies;
