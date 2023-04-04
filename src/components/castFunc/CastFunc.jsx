@@ -37,14 +37,4 @@ CastFunc.propTypes = {
       ),
 }
 
-// ReviewFunc.propTypes = {
-//   reviews: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-//       content: PropTypes.string,
-//       author: PropTypes.string,
-//     })
-//   ),
-// };
-
 export default CastFunc;

@@ -9,9 +9,10 @@ const Movies = () => {
   const [searchText, setSearchText] = useState('');
   const [title, setTitle] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(null);
 
-  const valueQuery = searchParams.get('query') ?? '';
+
+  const query = searchParams.get('query') || "";
+
 
   useEffect(() => {
     if (!searchText) {
@@ -31,13 +32,11 @@ const Movies = () => {
       });
   }, [searchText]);
 
-  useEffect(() => {
-    title && setQuery(
-      title.filter(el =>
-        el.title.toLowerCase().includes(valueQuery.toLowerCase)
-      )
-    );
-  }, [searchParams, title, valueQuery]);
+//   const updateQueryString = (query) => {
+//     const nextParams = query !== "" ? { query } : {};
+//     setSearchParams(nextParams);
+// };
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -54,7 +53,9 @@ const Movies = () => {
 
   const handleChange = e => {
     setValue(e.currentTarget.value);
-    setSearchParams({ query: e.target.value });
+    const nextParams = query !== "" ? { query } : {};
+    setSearchParams(nextParams);
+
   };
 
   const reset = () => {
@@ -76,7 +77,7 @@ const Movies = () => {
         />
       </form>
 
-      {query !== null && <TitleGallery data={title} />}
+      {title  && <TitleGallery data={title} />}
     </>
   );
 };
