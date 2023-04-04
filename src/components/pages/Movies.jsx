@@ -2,23 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { SearchM } from 'components/services/getMovies';
 import Notiflix from 'notiflix';
 import TitleGallery from 'components/titleGallery/TitleGallery';
-// import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 const Movies = () => {
   const [value, setValue] = useState('');
   const [searchText, setSearchText] = useState('');
   const [title, setTitle] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
 
-  // const query = searchParams.get('query') || "";
+  const query = searchParams.get('query') || "";
 
 
   useEffect(() => {
-    if (!searchText) {
+    if (!query) {
       return;
     }
-    SearchM(searchText)
+    SearchM(query)
       .then(response => response.json())
       .then(data => {
         if (data.results.length === 0) {
@@ -30,17 +30,18 @@ const Movies = () => {
       .catch(error => {
         console.log(error);
       });
-  }, [searchText]);
+  }, [query]);
 
-//   const updateQueryString = (query) => {
-//     const nextParams = query !== "" ? { query } : {};
-//     setSearchParams(nextParams);
-// };
+  const updateQueryString = (query) => {
+    const nextParams = query !== "" ? { query } : {};
+    setSearchParams(nextParams);
+};
 
 
   const handleSubmit = e => {
     e.preventDefault();
     handleSearch(value);
+    updateQueryString(value)
     reset();
   };
 
