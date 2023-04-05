@@ -4,18 +4,18 @@ import { lazy } from 'react';
 // import { Suspense } from 'react';
 // import { lazy } from 'react';
 
-// import HomePage from './pages/HomePage';
+// import HomePage from 'pages/HomePage';
 // import Movies from './pages/Movies';
 // import MovieDetails from './pages/MovieDetails';
 // import Reviews from './reviews/Reviews';
 // import Cast from './cast/Cast';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
-const Movies = lazy(() => import('./pages/Movies'));
-const MovieDetails = lazy(() => import('./pages/MovieDetails'));
+const HomePage = lazy(() => import('pages/HomePage'));
+const Movies = lazy(() => import('pages/Movies'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
 const Reviews = lazy(() => import('./reviews/Reviews'));
 const Cast = lazy(() => import('./cast/Cast'));
-const NotFound = lazy(() => import('./pages/NotFound'));
+const NotFound = lazy(() => import('pages/NotFound'));
 
 const App = () => {
   return (

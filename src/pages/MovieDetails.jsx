@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import { SearchById } from 'components/services/getMovies';
+import { useLocation, useParams } from 'react-router-dom';
+import { SearchById } from 'services/getMovies';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
@@ -21,6 +21,8 @@ import {
 const MovieDetails = () => {
   const [info, setInfo] = useState('');
   const { moveid } = useParams();
+  const location = useLocation();
+  const cameBack = location.state?.from ?? "/"; 
 
   useEffect(() => {
     SearchById(moveid)
@@ -32,6 +34,12 @@ const MovieDetails = () => {
 
   return (
     <div>
+      <div>
+        <Link to={cameBack}>
+        Go Back
+        </Link>
+      </div>
+
       <Img
         src={
           info.poster_path
@@ -45,10 +53,14 @@ const MovieDetails = () => {
       <OriginName>{original_title}</OriginName>
       <Popular>Popularity:{popularity}</Popular>
       <Container>
-      <Overw>Overview</Overw>
-      {overview === '' ? <UnderOver>sorry,but overview empty </UnderOver> : <UnderOver>{overview}</UnderOver>}
+        <Overw>Overview</Overw>
+        {overview === '' ? (
+          <UnderOver>sorry,but overview empty </UnderOver>
+        ) : (
+          <UnderOver>{overview}</UnderOver>
+        )}
       </Container>
-      
+
       <Status>
         <span>Status</span>:{status}
       </Status>
@@ -57,12 +69,12 @@ const MovieDetails = () => {
 
       <UlAdd>
         <li>
-          <Link to="cast">
+          <Link to="cast" state={{from : cameBack}}>
             <CastWord>Cast</CastWord>
           </Link>
         </li>
         <li>
-          <Link to="reviews">
+          <Link to="reviews" state={{from : cameBack}}>
             <ReviewWord>Reviews</ReviewWord>
           </Link>
         </li>

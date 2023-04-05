@@ -62,4 +62,5 @@ margin: 60px 0;
 export const Img = styled.img`
 display: flex;
 justify-content: center;
+margin: auto;
 ` 

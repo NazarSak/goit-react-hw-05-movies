@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { ReviewsById } from 'components/services/getMovies';
+import { ReviewsById } from 'services/getMovies';
 import { useEffect, useState } from 'react';
 import ReviewFunc from 'components/reviewFunc/ReviewFunc';
 

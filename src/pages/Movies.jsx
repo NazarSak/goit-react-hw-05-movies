@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SearchM } from 'components/services/getMovies';
+import { SearchM } from 'services/getMovies';
 import Notiflix from 'notiflix';
 import TitleGallery from 'components/titleGallery/TitleGallery';
 import { useSearchParams } from 'react-router-dom';

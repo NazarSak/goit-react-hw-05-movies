@@ -1,5 +1,5 @@
 import React from 'react';
-import { CastById } from 'components/services/getMovies';
+import { CastById } from 'services/getMovies';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CastFunc from 'components/castFunc/CastFunc';
