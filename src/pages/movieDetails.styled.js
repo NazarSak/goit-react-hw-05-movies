@@ -64,3 +64,11 @@ display: flex;
 justify-content: center;
 margin: auto;
 ` 
+
+export const Div = styled.div`
+background-color: bisque;
+/* background-image: url(https://terminalanime.files.wordpress.com/2012/12/girls-und-panzer.jpg?w=2000&h=);
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed; */
+`

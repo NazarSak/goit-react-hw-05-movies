@@ -16,13 +16,14 @@ import {
   Status,
   OriginName,
   Img,
+  Div,
 } from './movieDetails.styled';
 
 const MovieDetails = () => {
   const [info, setInfo] = useState('');
   const { moveid } = useParams();
   const location = useLocation();
-  const cameBack = location.state?.from ?? "/"; 
+  const cameBack = location.state?.from ?? '/movies';
 
   useEffect(() => {
     SearchById(moveid)
@@ -33,11 +34,9 @@ const MovieDetails = () => {
   const { popularity, original_title, overview, status } = info;
 
   return (
-    <div>
+    <Div>
       <div>
-        <Link to={cameBack}>
-        Go Back
-        </Link>
+        <Link to={cameBack}>Go Back</Link>
       </div>
 
       <Img
@@ -69,12 +68,12 @@ const MovieDetails = () => {
 
       <UlAdd>
         <li>
-          <Link to="cast" state={{from : cameBack}}>
+          <Link to="cast" state={{ from: cameBack }}>
             <CastWord>Cast</CastWord>
           </Link>
         </li>
         <li>
-          <Link to="reviews" state={{from : cameBack}}>
+          <Link to="reviews" state={{ from: cameBack }}>
             <ReviewWord>Reviews</ReviewWord>
           </Link>
         </li>
@@ -82,7 +81,7 @@ const MovieDetails = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </Div>
   );
 };
 
