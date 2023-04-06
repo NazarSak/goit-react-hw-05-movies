@@ -1,6 +1,6 @@
 import { useLocation, useParams } from 'react-router-dom';
 import { SearchById } from 'services/getMovies';
-import { useEffect, useState } from 'react';
+import { useEffect,  useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
@@ -24,6 +24,7 @@ const MovieDetails = () => {
   const { moveid } = useParams();
   const location = useLocation();
   const cameBack = location.state?.from ?? '/movies';
+  // const backLocationRef = useRef(cameBack)
 
   useEffect(() => {
     SearchById(moveid)

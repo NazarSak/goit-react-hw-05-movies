@@ -7,7 +7,6 @@ const HomePage = () => {
   const [film, setFilm] = useState([]);
 
   const location = useLocation();
-  const cameBackLoc = location.state?.from ?? '/';
 
   useEffect(() => {
     getMovies()
@@ -24,7 +23,7 @@ const HomePage = () => {
           <Link
             key={movie.id}
             to={`/movies/${movie.id}`}
-            state={{ from: cameBackLoc }}
+            state={{ from: location }}
           >
             <p>{movie.title}</p>
           </Link>
